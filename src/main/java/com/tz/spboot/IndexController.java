@@ -3,6 +3,7 @@ package com.tz.spboot;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 
+import com.tz.config.MongodbConfig;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +20,10 @@ public class IndexController {
     @GetMapping("/first")
     public String invoke(){
 
+        logger.warn("invoke first");
+        MongodbConfig mongodbConfig=new MongodbConfig();
+        //mongodbConfig.findOne("23");
+        mongodbConfig.findlist();
         return "string is word";
     }
 
